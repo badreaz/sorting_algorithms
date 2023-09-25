@@ -8,10 +8,12 @@
  */
 void quick_sort(int *array, size_t size)
 {
-	for (i = 0; i < size; i++)
+	int pivot, i, j, tmp;
+
+	for (i = 0; i < (int)size; i++)
 	{
 		pivot = array[size - i];
-		for (j = i; j < size - i; j++)
+		for (j = i; j < (int)size - i; j++)
 		{
 			if (array[j] < pivot)
 			{
@@ -21,6 +23,5 @@ void quick_sort(int *array, size_t size)
 			}
 		}
 		tmp = array[i + 1];
-		array[i + 1] = array[];
 	}
 }
