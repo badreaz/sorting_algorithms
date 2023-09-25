@@ -27,6 +27,7 @@ void heap_sort(int *array, size_t size)
 			array[max] = tmp;
 			print_array(array, size);
 		}
+	}
 
 	for (i = size - 1; i > 0; i--)
 	{
