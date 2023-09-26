@@ -14,22 +14,20 @@ void insertion_sort_list(listint_t **list)
 		old = loop->prev;
 		new = loop->next;
 		while (old && old->n > loop->n)
-			old = old->next;
-		if (!old)
 		{
-			(*list)->prev = loop;
-			loop->next = *list;
-			loop->prev = NULL;
-			*list = loop;
+			old->next = loop->next;
+			if (loop->next)
+				loop->next->prev = old;
+			loop->prev = old->prev;
+			loop->next = old;
+			if (old->prev)
+				old->prev->next = loop;
+			else
+				*list = loop;
+			old->prev = loop;
+			old = loop->prev;
+			print_list(*list);
 		}
-		else
-		{
-			old->next->prev = loop;
-			loop->next = old->next;
-			old->next = loop;
-			loop->prev = old;
-		}
-		print_list(*list);
 		loop = new;
 	}
 }
