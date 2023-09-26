@@ -28,7 +28,6 @@ void shell_sort(int *array, size_t size)
 				j -= gap;
 			}
 			array[j] = tmp;
-			printf("\n");
 		}
 		print_array(array, size);
 	}
