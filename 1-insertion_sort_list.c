@@ -7,10 +7,11 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *loop = (*list)->next, *old, *new;
+	listint_t *loop, *old, *new;
 
 	if (!list)
 		return;
+	loop = (*list)->next;
 	while (loop)
 	{
 		old = loop->prev;
