@@ -19,7 +19,7 @@ void heap_sort(int *array, size_t size)
 		return;
 
 	for (i = size - 2; (int)i >= 0; i--)
-		sift_down(array, i, size -1, size);
+		sift_down(array, i, size - 1, size);
 
 	for (i = size - 1; i > 0;)
 	{
