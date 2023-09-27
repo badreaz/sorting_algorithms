@@ -12,37 +12,37 @@ void cocktail_sort_list(listint_t **list)
 
 	while (swap)
 	{
-		swap = 0, h = *list;
-		for (; h && h->next; h = h->next)
+		for (h = *list, swap = 0; h && h->next; h = h->next)
 		{
 			if (h->n > h->next->n)
 			{
-				if (h->prev)
-					h->prev->next = h->next;
-				tmp = h->prev;
-				h->prev = h->next->prev;
-				h->next->prev = tmp;
 				tmp = h->next;
-				h->next = h->next->next;
-				h->next->next = tmp, swap = 1;
-				print_list(*list);
+				if (h->prev)
+					h->prev->next = tmp;
+				else
+					*list = tmp;
+				tmp->prev = h->prev, h->next = tmp->next;
+				if (tmp->next)
+					tmp->next->prev = h;
+				h->prev = tmp, tmp->next = h;
+				h = tmp, swap = 1, print_list(*list);
 			}
 		}
 		if (!swap)
 			break;
-		swap = 0;
-		for (; h && h->prev; h = h->prev)
+		for (swap = 0; h && h->prev; h = h->prev)
 		{
 			if (h->prev->n > h->n)
 			{
-				if (h->prev)
-					h->prev->next = h->next;
-				tmp = h->prev;
-				h->prev = h->next->prev;
-				h->next->prev = tmp;
-				tmp = h->next;
-				h->next = h->next->next;
-				h->next->next = tmp, swap = 1;
+				tmp = h->prev, tmp->next = h->next;
+				if (h->next)
+					h->next->prev = tmp;
+				h->prev = tmp->prev, h->next = tmp;
+				if (tmp->prev)
+					tmp->prev->next = h;
+				else
+					*list = h;
+				tmp->prev = h, h = tmp, swap = 1;
 				print_list(*list);
 			}
 		}
