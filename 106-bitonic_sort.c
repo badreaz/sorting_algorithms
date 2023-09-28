@@ -8,7 +8,7 @@ void merge(int *array, int low, int size, int ssize, int dir);
  * bitonic_sort - sorts an array of integers using bitonic sort algorithm
  * @array: array to sort.
  * @size: array size.
- nt)*/
+ */
 void bitonic_sort(int *array, size_t size)
 {
 	bitonic_seq(array, 0, size, size, 1);
@@ -29,14 +29,14 @@ void bitonic_seq(int *array, int low, int size, int ssize, int dir)
 	if (ssize > 1)
 	{
 		k = ssize / 2;
-		printf("Merging [%d/%d] (%s):\n", ssize, size, dir? "UP" : "DOWN");
+		printf("Merging [%d/%d] (%s):\n", ssize, size, dir ? "UP" : "DOWN");
 		print_array(array + low, ssize);
 
 		bitonic_seq(array, low, size, k, 1);
 		bitonic_seq(array, low + k, size, k, 0);
 		merge(array, low, size, ssize, dir);
 
-		printf("Result [%d/%d] (%s):\n", ssize, size, dir? "UP" : "DOWN");
+		printf("Result [%d/%d] (%s):\n", ssize, size, dir ? "UP" : "DOWN");
 		print_array(array + low, ssize);
 	}
 }
