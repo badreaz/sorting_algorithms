@@ -29,12 +29,14 @@ void hoare_sort(int *array, int size, int lo, int hi)
 	if (lo >= hi)
 		return;
 	pivot = array[hi];
-	i = lo;
-	j = hi;
+	i = lo - 1;
+	j = hi + 1;
 	while (i < j)
 	{
+		i++;
 		while (array[i] < pivot)
 			i++;
+		j--;
 		while (array[j] > pivot)
 			j--;
 		if (i < j)
